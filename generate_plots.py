@@ -156,9 +156,9 @@ def plot_boxplot(sensor_a, sensor_b, ax):
 def main():
     """Generate synthetic sensor data and create publication-quality visualizations.
     
-    Generates temperature data from two sensors, creates a 1x3 subplot figure 
-    with scatter, histogram, and box plot visualizations, and saves the figure 
-    as sensor_analysis.png at 150 DPI with tight bounding box.
+    Generates temperature data from two sensors, creates a 2x2 subplot figure 
+    with scatter, histogram, and box plot visualizations (fourth cell empty), 
+    and saves the figure as sensor_analysis.png at 150 DPI with tight bounding box.
     
     Returns
     -------
@@ -170,13 +170,14 @@ def main():
     seed = 1234
     sensor_a, sensor_b, timestamps = generate_data(seed)
     
-    # Create figure with 1x3 subplots
-    fig, axes = plt.subplots(1, 3, figsize=(18, 5))
+    # Create figure with 2x2 subplots
+    fig, axes = plt.subplots(2, 2, figsize=(12, 8))
     
     # Call each plot function
-    plot_scatter(sensor_a, sensor_b, timestamps, axes[0])
-    plot_histogram(sensor_a, sensor_b, axes[1])
-    plot_boxplot(sensor_a, sensor_b, axes[2])
+    plot_scatter(sensor_a, sensor_b, timestamps, axes[0, 0])
+    plot_histogram(sensor_a, sensor_b, axes[0, 1])
+    plot_boxplot(sensor_a, sensor_b, axes[1, 0])
+    # Fourth cell (axes[1, 1]) remains empty
     
     # Adjust layout
     plt.tight_layout()
